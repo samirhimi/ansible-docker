@@ -1,4 +1,4 @@
-- name: Docker Container Management
+- name: Servers Management
   hosts: servers
   tasks:
     - name: Update and upgrade yum packages
@@ -6,12 +6,12 @@
         name: '*'
         state: latest
 
-    - name: Install Python3
+    - name: Install webserver
       yum:
-        name: python3
+        name: httpd
         state: present
 
-    - name: Install Docker
-      yum:
-        name: docker
-        state: present
+    - name: start the webserver
+      service:
+        name: httpd
+        state: started 
