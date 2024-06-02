@@ -8,7 +8,6 @@ services:
         ipv4_address: 172.25.250.10
     volumes:
       - node1_data:/data
-    command: sleep infinity
     tty: true
     privileged: true
 
@@ -20,7 +19,6 @@ services:
         ipv4_address: 172.25.250.11
     volumes:
       - node2_data:/data
-    command: sleep infinity
     tty: true
     privileged: true
 
@@ -32,7 +30,6 @@ services:
         ipv4_address: 172.25.250.12
     volumes:
       - node3_data:/data
-    command: sleep infinity
     tty: true
     privileged: true
   
@@ -44,7 +41,6 @@ services:
         ipv4_address: 172.25.250.13
     volumes:
       - node4_data:/data
-    command: sleep infinity
     tty: true
     privileged: true
 

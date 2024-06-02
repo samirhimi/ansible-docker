@@ -1,15 +1,33 @@
-- name: Servers Management
-  hosts: servers
-  tasks:
-    - name: Update and upgrade yum packages
-      yum:
-        name: '*'
-        state: latest
+---
+- name: "Build image with ansible"
+  hosts: localhost
+  gather_facts: no
+  tasks:  
 
-    - name: Install webserver
-      yum:
-        name: httpd
-        state: present
+    - name: remove used image 
+      command: docker rmi  sami4rhimi/ansible-ubi
+      ignore_errors: true
 
-    - name: start the webserver
-      command: httpd -k start 
+    - name: build docker image from dockerfile
+      command: docker build -t ansible-ubi  .
+
+    - name: create tag to image
+      command: docker tag ansible-ubi sami4rhimi/ansible-ubi
+
+    - name: push image to dockerhub
+      command: docker push sami4rhimi/ansible-ubi
+
+    - name: remove running container
+      command: docker rm -f managed-node
+      ignore_errors: true
+
+    - name: start new container
+      command: docker run -d -it --name managed-node sami4rhimi/ansible-ubi
+
+    - name: Run docker ps command
+      command: docker ps
+      register: docker_ps_output
+
+    - name: Display docker ps output
+      debug:
+        var: docker_ps_output.stdout
