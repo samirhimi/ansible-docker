@@ -12,6 +12,4 @@
         state: present
 
     - name: start the webserver
-      service:
-        name: httpd
-        state: started 
+      command: httpd -k start
