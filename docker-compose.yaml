@@ -1,0 +1,62 @@
+version: '3'
+services:
+  node1:
+    build: .
+    container_name: node1
+    networks:
+      ansible-net:
+        ipv4_address: 172.25.250.10
+    volumes:
+      - node1_data:/data
+    command: sleep infinity
+    tty: true
+    privileged: true
+
+  node2:
+    build: .
+    container_name: node2
+    networks:
+      ansible-net:
+        ipv4_address: 172.25.250.11
+    volumes:
+      - node2_data:/data
+    command: sleep infinity
+    tty: true
+    privileged: true
+
+  node3:
+    build: .
+    container_name: node3
+    networks:
+      ansible-net:
+        ipv4_address: 172.25.250.12
+    volumes:
+      - node3_data:/data
+    command: sleep infinity
+    tty: true
+    privileged: true
+  
+  node4:
+    build: .
+    container_name: node4
+    networks:
+      ansible-net:
+        ipv4_address: 172.25.250.13
+    volumes:
+      - node4_data:/data
+    command: sleep infinity
+    tty: true
+    privileged: true
+
+networks:
+  ansible-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.250.0/24
+
+volumes:
+  node1_data:
+  node2_data:
+  node3_data:
+  node4_data:

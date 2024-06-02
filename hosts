@@ -1,0 +1,8 @@
+172.25.250.9 ansible.local.com
+
+# Ansible managed nodes
+
+172.25.250.10  node1
+172.25.250.11  node2
+172.25.250.12  node3
+172.25.250.13  node4
