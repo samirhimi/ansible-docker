@@ -1,4 +1,4 @@
-172.25.250.9 ansible.local.com
+192.168.10.200 ansible.local.com
 
 # Ansible managed nodes
 
