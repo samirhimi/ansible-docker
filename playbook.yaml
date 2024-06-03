@@ -1,7 +1,7 @@
 ---
 - name: "Build image with ansible"
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   tasks:  
 
     - name: remove used image 
